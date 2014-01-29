@@ -13,6 +13,33 @@ public class Store implements Serializable {
 	private String provinceOrState;
 	private String country;
 	private String currency;
+	private int active;
+	
+	public Store() {
+		id = 0;
+		name = "";
+		address = "";
+		postalCode = "";
+		city = "";
+		provinceOrState = "";
+		country = "";
+		currency = "";
+		active = 0;
+	}
+
+	public Store(int id, String name, String address, String postalCode,
+			String city, String provinceOrState, String country, String currency, int active) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.postalCode = postalCode;
+		this.city = city;
+		this.provinceOrState = provinceOrState;
+		this.country = country;
+		this.currency = currency;
+		this.active = active;
+	}
 	
 	/**
 	 * @return the id
@@ -101,5 +128,13 @@ public class Store implements Serializable {
 	
 	public String getCurrency() {
 		return currency;
+	}
+
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
 	}
 }

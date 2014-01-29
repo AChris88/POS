@@ -6,8 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
+
 import javax.swing.JOptionPane;
-import beans.DBConfig;
+
+import beans.DBConfigBean;
 
 public class DBProperties {
 	private String propFileName;
@@ -18,18 +20,17 @@ public class DBProperties {
 	 */
 	public DBProperties() {
 		super();
-		this.propFileName = "WebContent/DBConfig.properties";
-		//this.propFileName = "/DBConfig.properties";
+		propFileName = "src/DBConfig.properties";
 		prop = new Properties();
 	}
 	
 	public void setRealPath(String path){
-		this.propFileName = path;
+		propFileName = path;
 	}
 
-	public DBConfig loadProperties() {
+	public DBConfigBean loadProperties() {
 
-		DBConfig dbConfigData = new DBConfig();
+		DBConfigBean dbConfig = new DBConfigBean();
 		FileInputStream propFileStream = null;
 		File propFile = new File(propFileName);
 
@@ -39,32 +40,32 @@ public class DBProperties {
 				prop.load(propFileStream);
 				propFileStream.close();
 				
-				// Store the properties in a mailConfigData object
-				dbConfigData.setServer(prop.getProperty("server"));
-				dbConfigData.setPort(Integer.parseInt(prop.getProperty("port")));
-				dbConfigData.setDatabase(prop.getProperty("database"));
-				dbConfigData.setLogin(prop.getProperty("login"));
-				dbConfigData.setPassword(prop.getProperty("password"));
+				// Store the properties in a DBConfigBean
+				dbConfig.setServer(prop.getProperty("server"));
+				dbConfig.setPort(Integer.parseInt(prop.getProperty("port")));
+				dbConfig.setDatabase(prop.getProperty("database"));
+				dbConfig.setLogin(prop.getProperty("login"));
+				dbConfig.setPassword(prop.getProperty("password"));
 			} catch (FileNotFoundException e) {
 				JOptionPane.showMessageDialog(null,
 						"The properties file has not been found.",
 						"Missing Properties File", JOptionPane.ERROR_MESSAGE);
-				dbConfigData = null;
+				dbConfig = null;
 				e.printStackTrace();
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(null,
 						"There was an error reading the Properties file.",
 						"Properties File Read Error", JOptionPane.ERROR_MESSAGE);
-				dbConfigData = null;
+				dbConfig = null;
 				e.printStackTrace();
 			}
 		} else
-			dbConfigData = null;
+			dbConfig = null;
 
-		return dbConfigData;
+		return dbConfig;
 	}
 
-	public boolean writeProperties(DBConfig dbConfigData) {
+	public boolean writeProperties(DBConfigBean dbConfigData) {
 		boolean retVal = true;
 
 		prop.setProperty("server", dbConfigData.getServer());

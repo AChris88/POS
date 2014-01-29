@@ -10,18 +10,24 @@ public class Item implements Serializable {
 	private double costPrice;
 	private double listPrice;
 	private double salePrice;
+	private int active;
 
 	public Item() {
-		this.id = -1;
+		this.id = 0;
 		this.name = "";
+		this.costPrice = 0.00;
+		this.listPrice = 0.00;
+		this.salePrice =0.00;
+		this.active = 0;
 	}
 
-	public Item(int id, String name, double costPrice, double listPrice, double salePrice) {
+	public Item(int id, String name, double costPrice, double listPrice, double salePrice, int active) {
 		this.id = id;
 		this.name = name;
 		this.costPrice = costPrice;
 		this.listPrice = listPrice;
 		this.salePrice = salePrice;
+		this.active = active;
 	}
 
 	/**
@@ -97,5 +103,13 @@ public class Item implements Serializable {
 	 */
 	public void setSale_price(double sale_price) {
 		this.salePrice = sale_price;
+	}
+
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
 	}
 }

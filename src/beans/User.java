@@ -18,9 +18,10 @@ public class User implements Serializable {
 	private String postalCode;
 	private String phoneNumber;
 	private String emailAddress;
+	private int active;
 
 	public User() {
-		this.id = -1;
+		this.id = 0;
 		this.username = "";
 		this.password = "";
 		this.title = "";
@@ -31,11 +32,14 @@ public class User implements Serializable {
 		this.provinceOrState = "";
 		this.country = "";
 		this.postalCode = "";
+		this.active = 0;
 	}
 
 	public User(int id, String username, String password, String title,
 			String firstName, String lastName, String address, String city,
-			String provinceOrState, String country, String postalCode) {
+			String provinceOrState, String country, String postalCode,
+			String phoneNumber, String emailAddress, int active) {
+		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -47,6 +51,9 @@ public class User implements Serializable {
 		this.provinceOrState = provinceOrState;
 		this.country = country;
 		this.postalCode = postalCode;
+		this.phoneNumber = phoneNumber;
+		this.emailAddress = emailAddress;
+		this.active = active;
 	}
 
 	/**
@@ -242,4 +249,11 @@ public class User implements Serializable {
 		this.emailAddress = emailAddress;
 	}
 
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
+	}
 }
