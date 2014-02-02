@@ -33,6 +33,7 @@ public class DBManager {
 	private DBConfigBean configs = null;
 	private PreparedStatement statement = null;
 	private ResultSet results = null;
+	private int herp; // testing Ven
 
 	public DBManager() {
 		props = new DBProperties();
