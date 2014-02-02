@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class DBConfig implements Serializable{
 	/**
-	 * this is a comment
+	 * 
 	 */
 	private static final long serialVersionUID = 6592513391951980738L;
 	private String server;
