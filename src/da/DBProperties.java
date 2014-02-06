@@ -78,7 +78,7 @@ public class DBProperties {
 		File propFile = new File(propFileName);
 		try {
 			propFileStream = new FileOutputStream(propFile);
-			prop.store(propFileStream, "-- MailConfig Properties --");
+			prop.store(propFileStream, "-- Database Properties --");
 			propFileStream.close();
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null,
