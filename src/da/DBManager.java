@@ -115,8 +115,8 @@ public class DBManager {
 				"user_stores", "user_items" };
 		String tableCode = "";
 		boolean exists = false;
-		if (openConnection()) {
-			for (String tableName : tableNames) {
+		for (String tableName : tableNames) {
+			if (openConnection()) {
 				try {
 					meta = connection.getMetaData();
 					results = meta.getTables(null, null, tableName, null);
@@ -197,7 +197,7 @@ public class DBManager {
 
 					try {
 						statement = connection.prepareStatement(tableCode);
-						statement.executeQuery(tableCode);
+						statement.executeUpdate(tableCode);
 					} catch (SQLException e) {
 						logger.log(Level.SEVERE,
 								"Error creating database table", e);
